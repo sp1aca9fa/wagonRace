@@ -1,0 +1,103 @@
+body {
+  background-color: #789EF1;
+}
+
+.track {
+  position: relative;
+  width: 100vw;
+  height: 200px;
+  overflow: hidden;
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 100vw;
+  height: 55vh;
+
+  overflow: hidden;
+  background: url("images/tokyo.jpg") repeat-x left center / auto 100%;
+  background-size: 200% 100%;
+  animation: slide-tokyo 7s linear infinite;
+  animation-play-state: paused;
+}
+
+.road {
+  position: absolute;
+  inset: 0;
+  background: url("images/road.jpg") repeat-x left center / auto 100%;
+  background-size: 50% 100%;
+  animation: slide-road 0.5s linear infinite;
+  animation-play-state: paused;
+}
+
+.finish-line {
+  position: absolute;
+  right: 0;
+  width: 1vw;
+  height: 100%;
+  z-index: 2;
+  background-image: url("images/finish.png");
+}
+
+.racer-table {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.racer-table tr {
+  height: 50%;
+}
+
+.racer-table td {
+  position: relative;
+  overflow: visible;
+}
+
+.racer-table .active1::before,
+.racer-table .active2::before {
+  content: "";
+  position: absolute;
+
+  width: 80px;
+  height: 80px;
+
+  left: 0;
+  top: 50%;
+
+  --x: 0px;
+  transform: translate(var(--x), -50%);
+  transition: transform 0.15s linear;
+
+  background-image: url("images/player_1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.racer-table .active2::before {
+  background-image: url("images/player_2.png");
+}
+
+@keyframes slide-road {
+  from {
+    background-position-x: 0%;
+  }
+  to {
+    background-position-x: -50%;
+  }
+}
+
+@keyframes slide-tokyo {
+  from {
+    background-position-x: 0%;
+  }
+  to {
+    background-position-x: 200%;
+  }
+}
